@@ -17,7 +17,7 @@ export const registerUserService = async ({ name, email, password, }) => {
 
     const hashedPassword = await bcrypt.hash(password, 10); // Encriptamos la contraseña
 
-    const user = User.create({
+    const user = await User.create({
         name,
         email,
         password: hashedPassword,
