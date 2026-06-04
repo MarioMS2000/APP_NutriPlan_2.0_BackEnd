@@ -1,13 +1,15 @@
 import { Router } from "express"; // Router() sirve para agrupar rutas relacionadas
 import { register, login, logout, } from "../controllers/auth.controller.js";
 import { authMiddleware } from "../middlewares/auth.middleware.js"; // middleware de autenticación
+import { registerValidation, loginValidation, } from "../validations/auth.validation.js";
+import { validationMiddleware, } from "../middlewares/validation.middleware.js";
 
 const router = Router(); // Creas un mini servidor de rutas
 
 // POST http://localhost:3000/api/auth/register
-router.post("/register", register);
+router.post("/register", registerValidation, validationMiddleware, register);
 // POST http://localhost:3000/api/auth/login
-router.post("/login", login);
+router.post("/login", loginValidation, validationMiddleware, login);
 // POST http://localhost:3000/api/auth/logout
 router.post("/logout", logout);
 

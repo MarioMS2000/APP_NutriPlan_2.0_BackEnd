@@ -1,9 +1,6 @@
 // Archivo  que realiza la conexión entre tu aplicación Node.js y PostgreSQL usando Sequelize
 
 import { Sequelize } from "sequelize"; // Clase que se encarga de crear la conexión con la base de datos
-import dotenv from "dotenv"; // Leer las variables del archivo .env
-
-dotenv.config(); // Hace que Sequelize pueda leer -> DB_NAME, DB_USER, DB_PASSWORD, DB_HOST, DB_PORT
 
 // Crea la conexión. Creando una instancia de Sequelize y la exporta
 export const sequelize = new Sequelize(

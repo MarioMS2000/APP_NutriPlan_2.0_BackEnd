@@ -6,6 +6,8 @@ import helmet from "helmet"; // Añade cabeceras HTTP de seguridad automáticame
 import morgan from "morgan"; // Registra en consola todas las peticiones que llegan al backend
 import cookieParser from "cookie-parser"; // Leer las cookies enviadas por el navegador
 import authRoutes from "./routes/auth.routes.js";
+import { notFoundMiddleware } from "./middlewares/notFound.middleware.js";
+import { errorMiddleware } from "./middlewares/error.middleware.js";
 
 const app = express(); // Creo la app de Express
 
@@ -48,5 +50,9 @@ app.get("/api/health", (req, res) => {
 });
 
 app.use("/api/auth", authRoutes);
+
+app.use(notFoundMiddleware);
+
+app.use(errorMiddleware);
 
 export default app;
