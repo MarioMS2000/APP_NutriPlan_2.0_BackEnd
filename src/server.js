@@ -5,6 +5,7 @@ import app from "./app.js"; // Importo la aplicación que cree en app.js y la re
 import { sequelize } from "./config/postgres.js";
 import { connectMongoDB } from "./config/mongo.js";
 import "./models/postgres/index.js"; // Importamos Modelos
+import { seedRoles } from "./seeders/roleSeeder.js";
 
 dotenv.config(); // Lee el archivo .env y mete sus variables dentro
 
@@ -18,11 +19,12 @@ const startServer = async () => {
         await sequelize.sync({ alter: true }); // sync() -> compara tus modelos de Sequelize con las tablas reales de PostgreSQL. Y si en PostgreSQL todavía no existe la tabla, Sequelize la crea automáticamente. alert : true -> Si mis modelos han cambiado, actualiza las tablas automáticamente 
         console.log("✅ PostgreSQL models synced");
 
+        await seedRoles();
+
         await connectMongoDB();
 
         // Arrancar el servidor
         app.listen(PORT, () => {
-            app.listen(5000);
             console.log(
                 `🚀 Server running on port ${PORT}`
             );

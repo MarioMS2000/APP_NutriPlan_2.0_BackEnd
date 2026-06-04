@@ -13,11 +13,16 @@ export const Role = sequelize.define(
         name: {
             type: DataTypes.ENUM("user", "admin"),
             allowNull: false, // No permite valores nulos
-            unique: true, // No permite duplicados
         },
     },
     {
         tableName: "roles",
         timestamps: true,
+        indexes: [
+            {
+                unique: true,
+                fields: ["name"],
+            },
+        ],
     }
 );
