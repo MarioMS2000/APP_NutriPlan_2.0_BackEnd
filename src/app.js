@@ -5,6 +5,7 @@ import cors from "cors"; // Permite que el front(React) pueda hacer peticiones a
 import helmet from "helmet"; // Añade cabeceras HTTP de seguridad automáticamente
 import morgan from "morgan"; // Registra en consola todas las peticiones que llegan al backend
 import cookieParser from "cookie-parser"; // Leer las cookies enviadas por el navegador
+import authRoutes from "./routes/auth.routes.js";
 
 const app = express(); // Creo la app de Express
 
@@ -45,5 +46,7 @@ app.get("/api/health", (req, res) => {
         message: "NutriPlan API is running",
     });
 });
+
+app.use("/api/auth", authRoutes);
 
 export default app;

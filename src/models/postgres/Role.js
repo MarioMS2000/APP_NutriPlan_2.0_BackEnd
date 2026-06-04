@@ -22,7 +22,7 @@ export const Role = sequelize.define(
             {
                 unique: true,
                 fields: ["name"],
-            },
+            }, // Impedimos duplicados para que solo sea o user o admin
         ],
     }
 );
