@@ -9,4 +9,13 @@ User.belongsTo(Role, {
     foreignKey: "roleId",
 });
 
-export { Role, User };
+User.hasOne(NutritionProfile, {
+    foreignKey: "userId",
+    onDelete: "CASCADE",
+});
+
+NutritionProfile.belongsTo(User, {
+    foreignKey: "userId",
+});
+
+export { Role, User, NutritionProfile };
