@@ -9,6 +9,9 @@ import authRoutes from "./routes/auth.routes.js";
 import { notFoundMiddleware } from "./middlewares/notFound.middleware.js";
 import { errorMiddleware } from "./middlewares/error.middleware.js";
 
+import nutritionProfileRoutes from "./routes/nutritionProfile.routes.js";
+
+
 const app = express(); // Creo la app de Express
 
 /* 
@@ -49,10 +52,15 @@ app.get("/api/health", (req, res) => {
     });
 });
 
+// Rutas API
 app.use("/api/auth", authRoutes);
 
+app.use("/api/nutrition-profile", nutritionProfileRoutes);
+
+// Middleware 404 (si ninguna ruta anterior coincide)
 app.use(notFoundMiddleware);
 
+// Middleware de manejo de errores (si ocurre un error)
 app.use(errorMiddleware);
 
 export default app;
