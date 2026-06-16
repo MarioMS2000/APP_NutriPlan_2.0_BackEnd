@@ -1,5 +1,6 @@
 import { Role } from "./Role.js";
 import { User } from "./User.js";
+import { NutritionProfile } from "./NutritionProfile.js";
 
 Role.hasMany(User, {
     foreignKey: "roleId",
