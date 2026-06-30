@@ -116,7 +116,7 @@ const recipeSchema = new mongoose.Schema(
             type: Boolean,
             default: false,
         },
-
+        // Guardas quien creo la receta
         createdBy: {
             type: String,
             required: true,
